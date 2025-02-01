@@ -81,7 +81,7 @@ async function getPRFiles(owner, repo, prNumber) {
 async function roastCode(code) {
     try {
         const completion = await openai.chat.completions.create({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: [
                 { role: "system", content: ROAST_PROMPT },
                 { role: "user", content: code }
