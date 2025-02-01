@@ -2,10 +2,21 @@ import OpenAI from 'openai';
 import express from 'express';
 import dotenv from 'dotenv';
 import { Octokit } from 'octokit';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
+
+// CORS configuration
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN || ['http://localhost:3000', 'http://localhost:5173'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+    optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 const openai = new OpenAI({
